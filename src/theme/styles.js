@@ -1,4 +1,5 @@
 import { mode } from "@chakra-ui/theme-tools";
+import "@fontsource/poppins";
 
 export const globalStyles = {
   colors: {
@@ -24,10 +25,10 @@ export const globalStyles = {
       body: {
         overflowX: "hidden",
         bg: mode("gray.50", "#1B254B")(props),
-        fontFamily: "Helvetica, sans-serif",
+        fontFamily: "Poppins",
       },
       html: {
-        fontFamily: "Helvetica, sans-serif",
+        fontFamily: "Poppins",
       },
     }),
   },

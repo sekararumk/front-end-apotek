@@ -1,88 +1,144 @@
 // import
 import React, { Component }  from 'react';
 import Dashboard from "views/Dashboard/Dashboard.js";
-import Tables from "views/Dashboard/Tables.js";
+import KasirDashboard from "views/KasirDashboard/KasirDashboard.js";
+import Category from "views/Dashboard/Category.js";
+import FormAddCategory from "views/Dashboard/FormAddCategory.js";
+import FormEditCategory from "views/Dashboard/FormEditCategory.js";
+import FormAddProduct from "views/Dashboard/FormAddProduct.js";
+import FormEditProduct from "views/Dashboard/FormEditProduct.js";
+import Product from "views/Dashboard/Product.js";
+import KasirProduct from "views/KasirDashboard/KasirProduct.js";
 import Billing from "views/Dashboard/Billing.js";
-import RTLPage from "views/RTL/RTLPage.js";
-import Profile from "views/Dashboard/Profile.js";
+import KasirBilling from "views/KasirDashboard/KasirBilling.js";
+import KasirCart from "views/KasirDashboard/KasirCart.js";
+import ManagementUser from "views/Dashboard/ManagementUser";
+import FormAddUser from "views/Dashboard/FormAddUser.js";
 import SignIn from "views/Pages/SignIn.js";
-import SignUp from "views/Pages/SignUp.js";
 
 import {
   HomeIcon,
-  StatsIcon,
+  OrderIcon,
   CreditIcon,
   PersonIcon,
   DocumentIcon,
-  RocketIcon,
-  SupportIcon,
+  CategoryIcon,
+  ProductIcon
 } from "components/Icons/Icons";
 
-var dashRoutes = [
+// dashRoutes = layout /admin
+export var dashRoutes = [
   {
     path: "/dashboard",
     name: "Dashboard",
-    rtlName: "لوحة القيادة",
     icon: <HomeIcon color='inherit' />,
     component: Dashboard,
     layout: "/admin",
   },
   {
-    path: "/tables",
-    name: "Tables",
-    rtlName: "لوحة القيادة",
-    icon: <StatsIcon color='inherit' />,
-    component: Tables,
+    path: "/category",
+    name: "Category",
+    icon: <CategoryIcon color='inherit' />,
+    component: Category,
+    layout: "/admin",
+  },
+  {
+    path: "/add-category",
+    name: "Add Category",
+    icon: <CategoryIcon color='inherit' />,
+    component: FormAddCategory,
+    layout: "/admin",
+  },
+  {
+    path: "/edit-category/:id",
+    name: "Edit Category",
+    icon: <CategoryIcon color='inherit' />,
+    component: FormEditCategory,
+    layout: "/admin",
+  },
+  {
+    path: "/product",
+    name: "Product",
+    icon: <ProductIcon color='inherit' />,
+    component: Product,
+    layout: "/admin",
+  },
+  {
+    path: "/add-product",
+    name: "Add Product",
+    icon: <ProductIcon color='inherit' />,
+    component: FormAddProduct,
+    layout: "/admin",
+  },
+  {
+    path: "/edit-product/:id",
+    name: "Edit Product",
+    icon: <ProductIcon color='inherit' />,
+    component: FormEditProduct,
     layout: "/admin",
   },
   {
     path: "/billing",
-    name: "Billing",
-    rtlName: "لوحة القيادة",
+    name: "Transaksi",
     icon: <CreditIcon color='inherit' />,
     component: Billing,
     layout: "/admin",
   },
-  {
-    path: "/rtl-support-page",
-    name: "RTL",
-    rtlName: "آرتيإل",
-    icon: <SupportIcon color='inherit' />,
-    component: RTLPage,
-    layout: "/rtl",
-  },
-  {
-    name: "ACCOUNT PAGES",
-    category: "account",
-    rtlName: "صفحات",
-    state: "pageCollapse",
-    views: [
-      {
-        path: "/profile",
-        name: "Profile",
-        rtlName: "لوحة القيادة",
-        icon: <PersonIcon color='inherit' />,
-        secondaryNavbar: true,
-        component: Profile,
-        layout: "/admin",
-      },
-      {
-        path: "/signin",
-        name: "Sign In",
-        rtlName: "لوحة القيادة",
-        icon: <DocumentIcon color='inherit' />,
-        component: SignIn,
-        layout: "/auth",
-      },
-      {
-        path: "/signup",
-        name: "Sign Up",
-        rtlName: "لوحة القيادة",
-        icon: <RocketIcon color='inherit' />,
-        component: SignUp,
-        layout: "/auth",
-      },
-    ],
-  },
+  // {
+  //   path: "/management-user",
+  //   name: "Management User",
+  //   icon: <PersonIcon color='inherit' />,
+  //   secondaryNavbar: true,
+  //   component: ManagementUser,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/add-user",
+  //   name: "Add User",
+  //   icon: <PersonIcon color='inherit' />,
+  //   secondaryNavbar: true,
+  //   component: FormAddUser,
+  //   layout: "/admin",
+  // },
 ];
-export default dashRoutes;
+
+export var authRoutes = [
+  {
+    path: "/signin",
+    name: "Sign In",
+    icon: <DocumentIcon color='inherit' />,
+    component: SignIn,
+    layout: "/auth",
+  },
+]
+
+export var kasirRoutes = [
+  {
+    path: "/dashboard",
+    name: "Kasir Dashboard",
+    icon: <HomeIcon color='inherit' />,
+    component: KasirDashboard,
+    layout: "/kasir",
+  },
+  {
+    path: "/product",
+    name: "Product",
+    icon: <ProductIcon color='inherit' />,
+    component: KasirProduct,
+    layout: "/kasir",
+  },
+  {
+    path: "/order",
+    name: "Order",
+    icon: <OrderIcon color='inherit' />,
+    component: KasirCart,
+    layout: "/kasir",
+  },
+  {
+    path: "/billing",
+    name: "Transaksi",
+    icon: <CreditIcon color='inherit' />,
+    component: KasirBilling,
+    layout: "/kasir",
+  },
+]

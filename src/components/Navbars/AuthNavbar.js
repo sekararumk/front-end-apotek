@@ -18,7 +18,7 @@ import {
 import { SidebarResponsive } from "components/Sidebar/Sidebar";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import routes from "routes.js";
+import {dashRoutes} from "routes.js";
 export default function AuthNavbar(props) {
   const { logo, logoText, secondary, ...rest } = props;
   const { colorMode } = useColorMode();
@@ -154,7 +154,7 @@ export default function AuthNavbar(props) {
             hamburgerColor={hamburgerColor}
             logoText={props.logoText}
             secondary={props.secondary}
-            routes={routes}
+            routes={dashRoutes}
             logo={
               <Stack
                 direction="row"
@@ -183,7 +183,7 @@ export default function AuthNavbar(props) {
           />
         </Box>
         {linksAuth}
-        <Link href="https://creative-tim.com/product/argon-dashboard-chakra">
+        {/* <Link href="https://creative-tim.com/product/argon-dashboard-chakra"> */}
           <Button
             bg={bgButton}
             color={colorButton}
@@ -195,9 +195,9 @@ export default function AuthNavbar(props) {
               lg: "flex",
             }}
           >
-            Free Download
+            Care Pharmacy
           </Button>
-        </Link>
+        {/* </Link> */}
       </Flex>
     </Flex>
   );

@@ -18,15 +18,15 @@ import {
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import routes from "routes.js";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import {dashRoutes} from "routes.js";
 // Custom Chakra theme
 import FixedPlugin from "../components/FixedPlugin/FixedPlugin";
 // Custom components
 import MainPanel from "../components/Layout/MainPanel";
 import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
-import bgAdmin from "assets/img/admin-background.png";
+import bgAdmin from "assets/img/admin-background.jpg";
 
 export default function Dashboard(props) {
   const { ...rest } = props;
@@ -37,6 +37,11 @@ export default function Dashboard(props) {
   const getRoute = () => {
     return window.location.pathname !== "/admin/full-screen-maps";
   };
+
+  const currentPath = useLocation();
+
+  console.log(currentPath);
+
   const getActiveRoute = (routes) => {
     let activeRoute = "Default Brand Text";
     for (let i = 0; i < routes.length; i++) {
@@ -108,7 +113,8 @@ export default function Dashboard(props) {
   return (
     <Box>
       <Box
-        minH='40vh'
+        minH='100vh'
+        opacity={0.9}
         w='100%'
         position='absolute'
         bgImage={colorMode === "light" ? bgAdmin : "none"}
@@ -117,7 +123,7 @@ export default function Dashboard(props) {
         top='0'
       />
       <Sidebar
-        routes={routes}
+        routes={dashRoutes}
         logo={
           <Stack direction='row' spacing='12px' align='center' justify='center'>
             {colorMode === "dark" ? (
@@ -148,8 +154,8 @@ export default function Dashboard(props) {
         <Portal>
           <AdminNavbar
             onOpen={onOpen}
-            brandText={getActiveRoute(routes)}
-            secondary={getActiveNavbar(routes)}
+            brandText={getActiveRoute(dashRoutes)}
+            secondary={getActiveNavbar(dashRoutes)}
             fixed={fixed}
             {...rest}
           />
@@ -158,7 +164,7 @@ export default function Dashboard(props) {
           <PanelContent>
             <PanelContainer>
               <Switch>
-                {getRoutes(routes)}
+                {getRoutes(dashRoutes)}
                 <Redirect from='/admin' to='/admin/dashboard' />
               </Switch>
             </PanelContainer>
@@ -167,13 +173,13 @@ export default function Dashboard(props) {
         <Footer />
         <Portal>
           <FixedPlugin
-            secondary={getActiveNavbar(routes)}
+            secondary={getActiveNavbar(dashRoutes)}
             fixed={fixed}
             onOpen={onOpen}
           />
         </Portal>
         <Configurator
-          secondary={getActiveNavbar(routes)}
+          secondary={getActiveNavbar(dashRoutes)}
           isOpen={isOpen}
           onClose={onClose}
           isChecked={fixed}

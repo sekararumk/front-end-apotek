@@ -4,7 +4,7 @@ const Card = {
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    boxShadow: "0px 5px 14px rgba(0, 0, 0, 0.05)",
+    boxShadow: "0px 5px 14px rgba(0, 0, 0, 0.2)",
     borderRadius: "20px",
     position: "relative",
     wordWrap: "break-word",

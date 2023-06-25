@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import AdminNavbarLinks from "./AdminNavbarLinks";
-import { dashRoutes } from "routes";
+import { kasirRoutes } from "routes";
 
 export default function AdminNavbar(props) {
   const [scrolled, setScrolled] = useState(false);
@@ -77,8 +77,8 @@ export default function AdminNavbar(props) {
     }
   };
 
-  const newRoutes = dashRoutes.filter((r) => r.path !== '/add-category' && r.path !== '/edit-category/:id' && r.path !== '/add-product' && r.path !== '/edit-product/:id' && r.path !== '/add-user' && r.path !== '/management-user');
-    
+  const newRoutes = kasirRoutes;
+  
   return (
     <Flex
       position={navbarPosition}

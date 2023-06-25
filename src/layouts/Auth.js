@@ -5,7 +5,7 @@ import Footer from "components/Footer/Footer.js";
 import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import routes from "routes.js";
+import {authRoutes} from "routes.js";
 
 export default function Pages(props) {
   const { ...rest } = props;
@@ -84,14 +84,14 @@ export default function Pages(props) {
   document.documentElement.dir = "ltr";
   return (
     <Box ref={navRef} w='100%'>
-      <Portal containerRef={navRef}>
+      {/* <Portal containerRef={navRef}>
         <AuthNavbar secondary={getActiveNavbar(routes)} logoText='' />
-      </Portal>
+      </Portal> */}
       <Box w='100%'>
         <Box ref={wrapper} w='100%'>
           <Switch>
-            {getRoutes(routes)}
-            <Redirect from='/auth' to='/auth/login-page' />
+            {getRoutes(authRoutes)}
+            <Redirect from='/auth' to='/auth/signin' />
           </Switch>
         </Box>
       </Box>
