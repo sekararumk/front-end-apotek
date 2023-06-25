@@ -1,7 +1,9 @@
 // Chakra imports
 import {
   Box,
+  Button,
   Flex,
+  Icon,
   Table,
   Thead,
   Tr,
@@ -16,6 +18,7 @@ import {
 import Card from "components/Card/Card.js";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
 
 function KasirBilling() {
@@ -38,8 +41,25 @@ function KasirBilling() {
       });
   }, []);
 
+  const deleteTransactionById = (id) => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this Transaction?"
+    );
+    if (confirm) {
+      axios.delete(`http://localhost:8080/api/transactions/${id}`, {
+        headers: {
+          "x-access-token": user.accessToken,
+        },
+      }).then((res) => {
+        location.reload();
+        console.log(res.data);
+      });
+    }
+  };
+
+
   // Chakra color mode
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = useColorModeValue("white", "white");
   // const borderColor = useColorModeValue("#dee2e6", "transparent");
   const { colorMode } = useColorMode();
   const tableRowColor = useColorModeValue("#F7FAFC", "navy.900");
@@ -112,6 +132,13 @@ function KasirBilling() {
                     >
                       Subtotal
                     </Th>
+                    <Th
+                      color="gray.400"
+                      borderColor={borderColor}
+                      fontSize="md"
+                    >
+                      Action
+                    </Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -165,6 +192,37 @@ function KasirBilling() {
                           borderColor={borderColor}
                         >
                           Rp.{(+transaction.productInfo.harga * transaction.quantity).toLocaleString("id-ID")}
+                        </Td>
+                        <Td
+                          color={textTableColor}
+                          fontSize="sm"
+                          border="none"
+                          borderColor={borderColor}
+                        >
+                          <Button
+                            type="submit"
+                            onClick={() => deleteTransactionById(transaction.id)}
+                            color={textColor}
+                            fontSize="14px"
+                            size="sm"
+                            bg="red.500"
+                            fontWeight="bold"
+                            _hover={{
+                              background: "red.500",
+                              color: "white",
+                            }}
+                            _focus={{
+                              background: "red.500",
+                              color: "white",
+                            }}
+                            _active={{
+                              background: "red.500",
+                              color: "white",
+                            }}
+                          >
+                            <Icon as={FaTrashAlt} me="4px" />
+                            Remove
+                          </Button>
                         </Td>
                       </Tr>
                     );
