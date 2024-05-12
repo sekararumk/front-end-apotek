@@ -1,5 +1,5 @@
 // import
-import React, { Component }  from 'react';
+import React from 'react';
 import Dashboard from "views/Dashboard/Dashboard.js";
 import KasirDashboard from "views/KasirDashboard/KasirDashboard.js";
 import Category from "views/Dashboard/Category.js";
@@ -12,15 +12,12 @@ import KasirProduct from "views/KasirDashboard/KasirProduct.js";
 import Billing from "views/Dashboard/Billing.js";
 import KasirBilling from "views/KasirDashboard/KasirBilling.js";
 import KasirCart from "views/KasirDashboard/KasirCart.js";
-import ManagementUser from "views/Dashboard/ManagementUser";
-import FormAddUser from "views/Dashboard/FormAddUser.js";
 import SignIn from "views/Pages/SignIn.js";
 
 import {
   HomeIcon,
   OrderIcon,
   CreditIcon,
-  PersonIcon,
   DocumentIcon,
   CategoryIcon,
   ProductIcon
